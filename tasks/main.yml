@@ -1,0 +1,19 @@
+---
+# tasks file for apprenda
+- name: Perform {{ action }} against Apprenda environment {{ apprenda_url }}
+  apprenda_workloads:
+    apprenda_url: "{{ apprenda_url }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    tenant: "{{ tenant }}"
+    action: "{{ action }}"
+    app_alias: "{{ app_alias | default(None) }}"
+    version_alias: "{{ version_alias | default(None) }}"
+    component_alias: "{{ component_alias | default(None) }}"
+    node_name: "{{ node_name | default(None) }}"
+    workload_id: "{{ workload_id | default(None) }}"
+    node_name: "{{ node_name | default(None) }}"
+  register: output
+- name: Display Result
+  debug:
+    var: output
